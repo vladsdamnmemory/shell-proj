@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Shell</title>
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<section class="app" id="app" v-cloak>
+
+    <!-- Upper semi-yellow block -->
+    <div class="app__block">
+
+        <div class="app__block-logo" @click="clickOnVideo($event)">
+            <!--<div class="app__block-logoContainer">-->
+            <!--<img src="img/logo.png" height="70" width="450"/>-->
+            <!--</div>-->
+            <div class="close" @click.stop="closeVideo($event)" v-if="notMainVideo"></div>
+        </div>
+
+        <div class="app__block-info" @click="clickInteractive($event, 'Click_interactive')">
+            <h1>НОВЫЙ <br>Shell ClubSmart</h1>
+            <h2>ЕЩЕ ВЫГОДНЕЕ. <br> ЕЩЕ УДОБНЕЕ.</h2>
+            <div class="app__block-btn" :class="{'trembling-btn' : btnAnimated}"
+                 @click.stop="knowMore($event, 'Click_Button')">УЗНАТЬ БОЛЬШЕ
+            </div>
+            <div class="app__block-goWell"><img src="img/goWell.png"/></div>
+            <span class="app__block-caption">*ХОРОШЕЙ ДОРОГИ</span>
+        </div>
+    </div>
+
+    <div class="app__dashboard">
+
+        <!-- First video -->
+        <div class="app__dashboard-cardHolder" :class="{'active-card' : videos[0].display}"
+             @click="showVideo(0, 'Click_Pay', $event)"
+             @mouseenter="mouseEnter($event, 0, 'Hover_Pay'); hoverOn(0);"
+             @mouseleave="mouseLeave($event);">
+            <div class="marker"></div>
+            <img class="grayscale" :class="{flip: cards[0].animate}"
+                 src="img/card_lit.png"/><span>Платите <br> баллами</span>
+        </div>
+
+        <!-- Second video -->
+        <div class="app__dashboard-cardHolder" :class="{'active-card' : videos[1].display}"
+             @click="showVideo(1, 'Click_gas_station', $event)"
+             @mouseenter="mouseEnter($event, 1, 'Hover_gas_station'); hoverOn(1);"
+             @mouseleave="mouseLeave($event)">
+            <div class="marker"></div>
+            <img class="grayscale" :class="{flip: cards[1].animate}"
+                 src="img/card_lit.png"/><span>Дозаправка <br> на дороге</span>
+        </div>
+
+        <!-- Third video -->
+        <div class="app__dashboard-cardHolder" :class="{'active-card' : videos[2].display}"
+             @click="showVideo(2, 'Click_Card', $event)"
+             @mouseenter="mouseEnter($event, 2, 'Hover_Card'); hoverOn(2);" @mouseleave="mouseLeave($event)">
+            <div class="marker"></div>
+            <img class="grayscale" :class="{flip: cards[2].animate}"
+                 src="img/card_lit.png"/><span>Карта в <br> приложении</span>
+        </div>
+
+        <!-- Fourth video -->
+        <div class="app__dashboard-cardHolder" :class="{'active-card' : videos[3].display}"
+             @click="showVideo(3, 'Click_wheel', $event)"
+             @mouseenter="mouseEnter($event, 3, 'Hover_wheel'); hoverOn(3);" @mouseleave="mouseLeave($event)">
+            <div class="marker"></div>
+            <img class="grayscale" :class="{flip: cards[3].animate}"
+                 src="img/card_lit.png"/><span>Замена <br> колеса</span>
+        </div>
+
+    </div>
+
+    <div class="progressWrapper">
+        <div class="pgsBar" style="width: 0;"></div>
+    </div>
+
+</section>
+
+<!-- scripts -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<!-- Studio Framework -->
+<script src="https://5visions1-a.akamaihd.net/framework/v5vpcp.js"></script>
+
+<!-- VueJs code -->
+<script src="js/application.js"></script>
+</body>
+</html>
